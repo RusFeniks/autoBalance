@@ -1,0 +1,148 @@
+@font-face {
+	font-family: MADEEvolveSans-Bold;
+	src:url(fonts/11676.otf);
+}
+@font-face {
+	font-family: MADE Evolve Sans;
+	src:url(fonts/11678.otf);
+}
+@font-face {
+	font-family: MADE Evolve Sans EVO;
+	src:url(fonts/11682.otf);
+}
+
+body {
+	margin: 0;
+	background: #eeeeee;
+	font-size: 18px;
+	padding: 10px;
+	min-width: 550px;
+	font-family: MADE Evolve Sans;
+}
+
+.head_table {
+	padding: 0; margin: auto;
+	width: 100%;
+}
+
+.head_table .header td {
+	font-size: 1.1em;
+	font-weight: bold;
+	text-align: center;
+	font-family: MADEEvolveSans-Bold;
+}
+
+.head_table .inputs td {
+	padding: 5px;
+}
+
+.head_table .inputs td input {
+	width: 100%;
+	min-width: 50px;
+	box-sizing: border-box;
+	font-size: 1em;
+	padding: 3px 7px;
+	text-align: center;
+	border: 1px solid #aaa;
+	font-family: MADE Evolve Sans EVO;
+	outline-color: #76C7E1;
+}
+
+
+
+.button {
+	padding: 5px;
+}
+
+.button input {
+	width: 100%;
+	font-size: 1.0em;
+	padding: 10px;
+	font-family: MADEEvolveSans-Bold;
+}
+
+@keyframes spawnrow {
+	from { opacity: 0; left: -100%;}
+	to { opacity: 1; left: 0;}
+}
+
+.row {
+	font-size: 1.1em;
+	padding: 5px 10px;
+	animation: spawnrow 1s;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.content {
+	width: 100%;
+	margin: auto;
+}
+
+.row1 {
+	float: left;
+	width: calc(240px - 14px);
+	box-sizing: border-box;
+	margin: 7px;
+	overflow: hidden;
+}
+
+.row2 {
+	float: left;
+	width: calc(100% - 240px - 14px);
+	box-sizing: border-box;
+	margin: 7px;
+}
+
+.programm {
+	box-sizing: border-box;
+	border: 1px solid #aaa;
+	width: 100%;
+	min-height: 50px;
+	margin: 0 0 10px 0;
+	overflow: hidden;
+	color: #555;
+	padding: 7px;
+	font-size: 0.9em;
+}
+
+@keyframes summchanged {
+	from {color: #000;}
+	50% {color: red;}
+	to {color: #000;}
+}
+
+#itr {
+	padding: 15px 20px;
+}
+
+h3 {
+	padding: 0;
+	margin: 3px 7px;
+}
+
+p {
+	padding: 0px;
+	margin: 3px;
+}
+
+.page {
+	vertical-align: top;
+	width: auto;
+	box-sizing: border-box;
+	padding: 0; margin: 7px 10px;
+	display: inline-block;
+}
+
+.programm {
+	display: table;
+}
+
+label {
+	cursor: pointer;
+}
+
+#damagechakra-visual {
+	padding: 3px;
+	text-align: center;
+}

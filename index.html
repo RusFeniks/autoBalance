@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Авто баланс</title>
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="balance.js"></script>
+	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<table class="head_table">
+		<tr class="header">
+			<td>Nin</td>
+			<td>Tai</td>
+			<td>Gen</td>
+			<td>Int</td>
+			<td>Str</td>
+			<td>Spd</td>
+			<td>Chk</td>
+			<td>Rpc</td>
+			<td>Summ</td>
+		</tr>
+		<tr class="inputs">
+			<td><input type="text" id="Nin" class="stat"></td>
+			<td><input type="text" id="Tai" class="stat"></td>
+			<td><input type="text" id="Gen" class="stat"></td>
+			<td><input type="text" id="Int" class="stat"></td>
+			<td><input type="text" id="Str" class="stat"></td>
+			<td><input type="text" id="Spd" class="stat"></td>
+			<td><input type="text" id="Chk" class="stat"></td>
+			<td><input type="text" id="Rpc" class="stat"></td>
+			<td><input type="text" id="Summ" readonly="true" value="0"></td>
+		</tr>
+		<tr>
+			<td colspan="9" class="button">
+				<input type="button" value="Расчитать" id="math" disabled="true">
+			</td>
+		</tr>
+	</table>
+	
+	<div class="content">
+		<div class="rows row1" id="head_params"></div>
+		<div class="progs row2">
+			<div class="programm" id="itr"></div>
+			<div class="programm">
+				<div class="page">
+					<h3>Назначение техники</h3>
+					<div class="body">
+						<p><input type="radio" class="itr-creator" name="purpose" id="purpose-attack" checked> <label for="purpose-attack">Атака</label></p>
+						<p><input type="radio" class="itr-creator" name="purpose" id="purpose-defend"> <label for="purpose-defend">Защита</label></p>
+						<p><input type="radio" class="itr-creator" name="purpose" id="purpose-help"> <label for="purpose-help">Поддержка</label></p>
+					</div>
+				</div>
+				<div class="page" id="rank">
+					<h3>Ранг техники</h3>
+					<div class="body">
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-m"> <label for="rank-m">Рукопашная атака</label></p>
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-d"> <label for="rank-d">D</label></p>
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-c"> <label for="rank-c">C</label></p>
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-b" checked> <label for="rank-b">B</label></p>
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-a"> <label for="rank-a">A</label></p>
+						<p><input type="radio" class="itr-creator" name="rank" id="rank-s"> <label for="rank-s">S</label></p>
+					</div>
+				</div>
+				<div class="page" id="kind">
+					<h3>Вид</h3>
+					<div class="body">
+						<p><input type="checkbox" class="itr-creator" id="kind-nin"> <label for="kind-nin">Ниндзюцу</label></p>
+						<p><input type="checkbox" class="itr-creator" id="kind-tai"> <label for="kind-tai">Тайдзюцу</label></p>
+						<p><input type="checkbox" class="itr-creator" id="kind-gen"> <label for="kind-gen">Гендзюцу</label></p>
+					</div>
+				</div>
+				<div class="page" id="mod">
+					<h3>Модификаторы урона</h3>
+					<div class="body">
+						<p><input type="checkbox" class="itr-creator" id="mod-j"> <label for="mod-j">В прыжке</label></p>
+						<p><input type="checkbox" class="itr-creator" id="mod-r"> <label for="mod-r">С разгона</label></p>
+						<p><input type="checkbox" class="itr-creator" id="mod-s"> <label for="mod-s">Рывок</label></p>
+						<p><input type="checkbox" class="itr-creator" id="mod-p"> <label for="mod-p">Пробивающий удар</label></p>
+						<p><input type="checkbox" class="itr-creator" id="mod-w"> <label for="mod-w">Оружием</label></p>
+					</div>
+				</div>
+				<div class="page" id="damage-chakra">
+					<h3>Отношение чакры к урону</h3>
+					<div class="body">
+						<p><label>Чакра</label> <input type="range" class="itr-creator" min="-30" max="30" step="1" value="0" id="damagechakra-polsunok"> <label>Урон</label></p>
+						<p id="damagechakra-visual">0</p>
+					</div>
+				</div>
+				<div class="page" id="elem">
+					<h3>Модификаторы стихий</h3>
+					<div class="body">
+						<p><input type="checkbox" class="itr-creator" id="elem-l"> <label for="elem-l">Молния</label></p>
+						<p><input type="checkbox" class="itr-creator" id="elem-k"> <label for="elem-k">Огонь</label></p>
+						<p><input type="checkbox" class="itr-creator" id="elem-w"> <label for="elem-w">Вода</label></p>
+						<p><input type="checkbox" class="itr-creator" id="elem-d"> <label for="elem-d">Земля</label></p>
+						<p><input type="checkbox" class="itr-creator" id="elem-f"> <label for="elem-f">Ветер</label></p>
+					</div>
+				</div>
+				<div class="page" id="oth">
+					<h3>Разные модификаторы</h3>
+					<div class="body">
+						<p><input type="checkbox" class="itr-creator" id="oth-explosion"> <label for="oth-explosion">Взрыв</label></p>
+						<p><input type="checkbox" class="itr-creator" id="oth-teleport"> <label for="oth-teleport">Телепорт</label></p>
+						<p><input type="checkbox" class="itr-creator" id="oth-summon"> <label for="oth-summon">Призывной объект</label></p>
+						<p><input type="checkbox" class="itr-creator" id="oth-clone"> <label for="oth-clone">Клон</label></p>
+					</div>
+				</div>
+				<div class="page" id="range">
+					<h3>Дистанция</h3>
+					<div class="body">
+						<p><input type="radio" name="range" class="itr-creator" id="range-s" checked> <label for="range-s">Ближняя</label></p>
+						<p><input type="radio" name="range" class="itr-creator" id="range-m"> <label for="range-m">Средняя</label></p>
+						<p><input type="radio" name="range" class="itr-creator" id="range-l"> <label for="range-l">Дальняя</label></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
